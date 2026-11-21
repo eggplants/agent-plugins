@@ -1,0 +1,11 @@
+{
+  "name": "copilot-review",
+  "description": "Verify each unresolved Copilot review comment on a PR, then fix, reply to and resolve it",
+  "author": {
+    "name": "eggplants",
+    "url": "https://github.com/eggplants"
+  },
+  "repository": "https://github.com/eggplants/agent-plugins",
+  "license": "MIT",
+  "keywords": ["github", "copilot", "code-review", "pull-request"]
+}

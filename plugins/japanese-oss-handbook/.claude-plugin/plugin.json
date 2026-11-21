@@ -1,0 +1,12 @@
+{
+  "name": "japanese-oss-handbook",
+  "description": "任意の OSS の日本語ハンドブックを HonKit で書き、GitHub Pages で公開できるリポジトリに整える",
+  "author": {
+    "name": "eggplants",
+    "url": "https://github.com/eggplants"
+  },
+  "repository": "https://github.com/eggplants/agent-plugins",
+  "license": "MIT",
+  "keywords": ["honkit", "documentation", "japanese", "github-pages"],
+  "dependencies": ["yomiyasu@yomiyasu", "eli5@claude-community"]
+}

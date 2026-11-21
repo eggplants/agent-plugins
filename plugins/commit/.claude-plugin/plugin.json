@@ -1,0 +1,11 @@
+{
+  "name": "commit",
+  "description": "git の差分を論理的な単位に分け、`type: subject` の短いメッセージでコミットする",
+  "author": {
+    "name": "eggplants",
+    "url": "https://github.com/eggplants"
+  },
+  "repository": "https://github.com/eggplants/agent-plugins",
+  "license": "MIT",
+  "keywords": ["git", "commit"]
+}

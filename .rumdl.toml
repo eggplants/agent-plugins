@@ -1,0 +1,4 @@
+[global]
+# MD013: Japanese paragraphs stay on one line
+# MD014: the skills keep the `$` prompt to tell commands from their output
+disable = ["MD013", "MD014"]

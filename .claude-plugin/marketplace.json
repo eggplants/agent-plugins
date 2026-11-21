@@ -1,0 +1,29 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "agent-plugins-for-eggplants",
+  "owner": {
+    "name": "eggplants",
+    "url": "https://github.com/eggplants"
+  },
+  "metadata": {
+    "description": "eggplants が使っている Claude Code のプラグイン"
+  },
+  "allowCrossMarketplaceDependenciesOn": ["yomiyasu", "claude-community"],
+  "plugins": [
+    {
+      "name": "japanese-oss-handbook",
+      "description": "任意の OSS の日本語ハンドブックを HonKit で書き、GitHub Pages で公開できるリポジトリに整える",
+      "source": "./plugins/japanese-oss-handbook"
+    },
+    {
+      "name": "commit",
+      "description": "git の差分を論理的な単位に分け、`type: subject` の短いメッセージでコミットする",
+      "source": "./plugins/commit"
+    },
+    {
+      "name": "copilot-review",
+      "description": "Verify each unresolved Copilot review comment on a PR, then fix, reply to and resolve it",
+      "source": "./plugins/copilot-review"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+[settings]
+minimum_release_age = "7d"
+
+[tools]
+actionlint = "latest"
+claude = "latest"
+pinact = "latest"  # [skip ci]
+ruff = "latest"
+rumdl = "latest"
+shellcheck = "latest"
+tombi = "latest"
+usage = "latest"  # [skip ci]
+
+[tasks.init]
+description = "Install the git pre-commit hook"
+run = "mise generate git-pre-commit --write --task pre-commit"
+
+[tasks.fmt]
+description = "Format Markdown and TOML"
+depends = ["fmt:*"]
+
+[tasks."fmt:md"]
+description = "Format Markdown with rumdl"
+run = "rumdl fmt ."
+
+[tasks."fmt:toml"]
+description = "Format TOML with tombi"
+run = "tombi format"
+
+[tasks.lint]
+description = "Lint Markdown, TOML, the GitHub Actions workflows and the skill scripts"
+depends = ["lint:*"]
+
+[tasks."lint:md"]
+description = "Lint Markdown with rumdl"
+run = "rumdl check ."
+
+[tasks."lint:toml"]
+description = "Check TOML formatting and lint it with tombi"
+run = ["tombi format --check", "tombi lint --error-on-warnings"]
+
+[tasks."lint:actions"]
+description = "Lint the GitHub Actions workflows with actionlint (and shellcheck)"
+run = "actionlint .github/workflows/*.yml"
+
+[tasks."lint:py"]
+description = "Lint the Python scripts of the skills with ruff"
+run = "ruff check ."
+
+[tasks."lint:sh"]
+description = "Lint the shell scripts of the skills with shellcheck"
+run = "shellcheck plugins/*/skills/*/scripts/*.sh"
+
+[tasks.validate]
+description = "Validate the marketplace and plugin manifests and the skills"
+run = ["claude plugin validate .", "for p in plugins/*/; do claude plugin validate \"$p\"; done"]
+
+[tasks.pre-commit]
+description = "Run before every commit (git hook)"
+depends = ["lint", "validate"]
+
+[tasks.ci]
+description = "Lint and validate (what CI runs)"
+depends = ["lint", "validate"]
+
+[tasks.pinup]
+description = "Update the pinned action digests"
+run = "pinact run -u --min-age 7"
